@@ -37,3 +37,7 @@ SimpleScan(DynamoDB, {
     console.log(res)  
 })
 ```
+
+# Todo
+
+* After parallel scan check if last scan are good executed, else launch scan untill scan finished.
