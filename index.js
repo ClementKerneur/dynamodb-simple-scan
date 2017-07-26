@@ -8,6 +8,8 @@ module.exports = function(Dynamo, Params, Callback) {
         //Get numbers of Segements for this table, in Mega Bytes
         var nbSegments = Math.round(data.Table.TableSizeBytes/1000000);
 
+        if(!nbSegments) nbSegments = 1
+
         //Just to obtain an array of segments
         var segments = []
         for(var i = 0; nbSegments > i; i++) { segments.push(i) }
