@@ -24,11 +24,20 @@ git clone
 var SimpleScan = require('dynamodb-simple-scan')
 
 var AWS = require('aws-sdk')
+
 var DynamoDB = new AWS.DynamoDB({
     accessKeyId: 'XXXXXXXXX',
     secretAccessKey: 'XXXXXXXXX',
     region: 'XXXXXXXX'
 })
+
+//Or using DocumentClient()
+var DynamoDB = new AWS.DynamoDB.DocumentClient({
+    accessKeyId: 'XXXXXXXXX',
+    secretAccessKey: 'XXXXXXXXX',
+    region: 'XXXXXXXX'
+})
+
 
 SimpleScan(DynamoDB, {
     TableName: 'MyTable'

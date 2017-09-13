@@ -1,8 +1,16 @@
 var Async = require('async')
 var _ = require('lodash')
+var AWS = require('aws-sdk')
 
 module.exports = function(Dynamo, Params, Callback) {
-    Dynamo.describeTable({
+    if(typeof Dynamo.describeTable == 'function') {
+        var DynamoDB = Dynamo
+    }
+    else {
+        var DynamoDB = new AWS.DynamoDB(Dynamo.config)
+    }
+
+    DynamoDB.describeTable({
         TableName: Params.TableName
     }, function(err, data) {
         //Get numbers of Segements for this table, in Mega Bytes
